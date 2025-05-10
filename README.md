@@ -11,7 +11,7 @@ This program lets you grant yourself any amount of money unconditionally. Use it
 ## Using CitiesSkylinesMoneyGrant
 
 - 1.Double click CitiesSkylinesMoneyGrant.exe
-- 2.If the console didn't show the correct money, try running it as admin. If it dosen't work, offsets may have to update. Please tell me in Issues.
+- 2.If the console didn't show the correct money, try running it as admin. If it dosen't work, offsets may have to update. Please tell me in [Issues](https://github.com/M3351AN/CitiesSkylinesMoneyGrant/issues).
 - 3.Type in how much money you want to be granted.
 - 4.Press Enter & get money.
 - 5.Build your city.
@@ -28,4 +28,4 @@ For now, though, the program lets you decide!
 
 ## Credits
 
-[Nick Aldwin]((https://github.com/NJAldwin) for he's [GrantMeMoney](https://github.com/NJAldwin/GrantMeMoney). Inspired this & 99% copied README from.
+[Nick Aldwin](https://github.com/NJAldwin) for he's [GrantMeMoney](https://github.com/NJAldwin/GrantMeMoney). Inspired this & 99% copied README from.
