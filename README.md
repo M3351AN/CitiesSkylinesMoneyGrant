@@ -22,7 +22,7 @@ Technically this program won't conflict with any mods.
 
 ## The Future
 
-I can see how some might think that makes the game less sandboxy and more guided, but IMO it makes it more realistic -- if my city desperately needs a new transit line or a new highway (e.g. in Boston, the Big Dig and GLX are prime examples), the federal (or state, or whoever) government is usually gonna kick in some money to make it happen.
+I can see how some might think that makes the game less sandboxy and more guided, but IMO it makes it more realistic -- if my city desperately needs a new transit line or a new highway (e.g. in Boston, the Big Dig, GLX and Nanning Rail Transit Metro Line 1 2 3 4 5 are prime examples), the federal (or state, or whoever) government is usually gonna kick in some money to make it happen.
 
 For now, though, the program lets you decide!
 
