@@ -65,13 +65,13 @@ int Mian()
     uintptr_t relAddr = RefPtr<uintptr_t>(ptrAddress, offsets::relOffsets);
     uintptr_t viewAddr = RefPtr<uintptr_t>(ptrAddress, offsets::viewOffsets);
     while (true) {
-        int iMoney = -1;
-        int relVal, viewVal;
+        long long iMoney = -1;
+        long long relVal, viewVal;
         while (iMoney) {
             system("cls");
             std::cout << "剟勻天切及白央件犯奈扑亦件手�垓蕭鵊馱峇縣嶀鋓\n";
-            relVal = MEM::ReadAddress<int>(relAddr);
-            viewVal = MEM::ReadAddress<int>(viewAddr);
+            relVal = MEM::ReadAddress<long long>(relAddr);
+            viewVal = MEM::ReadAddress<long long>(viewAddr);
             //std::cout << "relVal:" << relVal << "\n";
             //std::cout << "viewVal:" << viewVal << "\n";
             std::cout << "You have money: " << viewVal / 100 << " now.\n";//Yes 100 times, it's correct.
@@ -80,10 +80,10 @@ int Mian()
         std::cout << "How much u wanna gain?\n";
         std::cin >> iMoney; 
         iMoney = iMoney * 100;
-        relVal = MEM::ReadAddress<int>(relAddr);
-        viewVal = MEM::ReadAddress<int>(viewAddr);//User may cost / gain money before enter.
-        MEM::WriteAddress<int>(relAddr, iMoney + viewVal);
-        MEM::WriteAddress<int>(viewAddr, iMoney + viewVal);
+        relVal = MEM::ReadAddress<long long>(relAddr);
+        viewVal = MEM::ReadAddress<long long>(viewAddr);//User may cost / gain money before enter.
+        MEM::WriteAddress<long long>(relAddr, iMoney + viewVal);
+        MEM::WriteAddress<long long>(viewAddr, iMoney + viewVal);
         Sleep(250);
     }
 
