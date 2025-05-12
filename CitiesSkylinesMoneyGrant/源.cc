@@ -74,7 +74,7 @@ int Mian()
             viewVal = MEM::ReadAddress<long long>(viewAddr);
             //std::cout << "relVal:" << relVal << "\n";
             //std::cout << "viewVal:" << viewVal << "\n";
-            std::cout << "You have money: " << viewVal / 100 << " now.\n";//Yes 100 times, it's correct.
+            std::cout << "You have money: " << (viewVal > 0 ? "\033[32m" : "\033[31m" ) << viewVal / 100 << "\033[0m" << " now.\n";//Yes 100 times, it's correct.
             iMoney = 0;
         }
         std::cout << "How much u wanna gain?\n";
