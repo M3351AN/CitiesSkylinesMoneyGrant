@@ -44,34 +44,28 @@ namespace offsets {
     std::vector<uintptr_t> viewOffsets = { 0xF8, 0x0, 0x80, 0x38, 0xF8, 0x318, 0x1D0 };
 }
 
-
-template<typename T>
-T RefPtr(uintptr_t baseAddr, const std::vector<uintptr_t>& offset) {
-    uintptr_t addr = baseAddr;
-    for (size_t i = 0; i < offset.size(); i++) {
-
-        addr = MEM::ReadAddress<uintptr_t>(addr);
-        addr += offset[offset.size() - i - 1];//The ptr offsets in CT tablez are in reverse order.
-    }
-
-    return addr;
-}
-
 int Mian()
 {
     SetConsoleTitle(L"Gimme Money!");
 
-    uintptr_t ptrAddress = MEM::baseAddress + offsets::ctAddress;
-    uintptr_t relAddr = RefPtr<uintptr_t>(ptrAddress, offsets::relOffsets);
-    uintptr_t viewAddr = RefPtr<uintptr_t>(ptrAddress, offsets::viewOffsets);
+    DWORD processId = Ukia::GetProc(L"Cities.exe");
+
+    uintptr_t baseAddress = Ukia::GetModuleBaseAddr(processId, L"mono.dll");
+
+    HANDLE processHandle = OpenProcess(PROCESS_VM_OPERATION | PROCESS_VM_READ | PROCESS_VM_WRITE, FALSE, processId);
+
+    uintptr_t ptrAddress = baseAddress + offsets::ctAddress;
+    uintptr_t relAddr = Ukia::DeRefPtr<uintptr_t>(processHandle, ptrAddress, offsets::relOffsets);
+    uintptr_t viewAddr = relAddr + 0x10;//Ukia::DeRefPtr<uintptr_t>(processHandle, ptrAddress, offsets::viewOffsets);
     while (true) {
         long long iMoney = -1;
-        long long relVal, viewVal;
+        //long long relVal;
+        long long viewVal;
         while (iMoney) {
             system("cls");
             std::cout << "剟勻天切及白央件犯奈扑亦件手�垓蕭鵊馱峇縣嶀鋓\n";
-            relVal = MEM::ReadAddress<long long>(relAddr);
-            viewVal = MEM::ReadAddress<long long>(viewAddr);
+            //relVal = Ukia::ReadAddr<long long>(processHandle, relAddr);
+            viewVal = Ukia::ReadAddr<long long>(processHandle, viewAddr);
             //std::cout << "relVal:" << relVal << "\n";
             //std::cout << "viewVal:" << viewVal << "\n";
             std::cout << "You have money: " << (viewVal > 0 ? "\033[32m" : "\033[31m" ) << viewVal / 100 << "\033[0m" << " now.\n";//Yes 100 times, it's correct.
@@ -80,10 +74,10 @@ int Mian()
         std::cout << "How much u wanna gain?\n";
         std::cin >> iMoney; 
         iMoney = iMoney * 100;
-        relVal = MEM::ReadAddress<long long>(relAddr);
-        viewVal = MEM::ReadAddress<long long>(viewAddr);//User may cost / gain money before enter.
-        MEM::WriteAddress<long long>(relAddr, iMoney + viewVal);
-        MEM::WriteAddress<long long>(viewAddr, iMoney + viewVal);
+        //relVal = Ukia::ReadAddr<long long>(processHandle, relAddr);
+        viewVal = Ukia::ReadAddr<long long>(processHandle, viewAddr);//User may cost / gain money before enter.
+        Ukia::WriteAddr<long long>(processHandle, relAddr, iMoney + viewVal);
+        Ukia::WriteAddr<long long>(processHandle, viewAddr, iMoney + viewVal);
         Sleep(250);
     }
 
