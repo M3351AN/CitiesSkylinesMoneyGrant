@@ -63,7 +63,7 @@ int Mian()
         long long viewVal;
         while (iMoney) {
             system("cls");
-            std::cout << "嘘っぱちのファンデーションも全部今夜のためよ~\n";
+            std::cout << "骞淬亴銈夊勾涓儶銉冦儣銈点兗銉撱偣閳嶆劅銈優銇椼仸銇緹鏄揬n";
             //relVal = Ukia::ReadAddr<long long>(processHandle, relAddr);
             viewVal = Ukia::ReadAddr<long long>(processHandle, viewAddr);
             //std::cout << "relVal:" << relVal << "\n";
